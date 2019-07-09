@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 /**
- * 执行 `App.js` 导出的 App 函数，生成 html (插入到 `root` 元素中) 
+ * 执行 `App.js` 导出的 App 函数，生成 html (插入到伴随的 `/public` 目录下的同名 `.html` 文件中的 `root` 元素中)
  * */
 ReactDOM.render(<App />, document.getElementById('root'));
 
