@@ -69,13 +69,28 @@ class App extends Component {
       books,
     };
 
-    // 声明的成员函数必须被拌定
-    //this.onDismiss = this.onDismiss.bind(this);
+    // 旧版本的 react 必须声明将成员函数拌定到 this，否则会遇到 undefined 错误。
+    //this.onDismiss = this.onDismiss.bind(this)
+    //this.onEvent = this.onEvent.bind(this)
   }
 
   // 声明成员变量
   onDismiss(id) {
     console.log( id + " has been deleted")
+    const updatedList = this.state.books.filter(book => {
+      return book.id !== id
+    })
+
+    // React 会自动为属性生成 setter
+    this.setState({
+      // state.books = updatedList
+      books: updatedList,
+    })
+  }
+
+  // onClick = {this.onEvent}; partial apply 函数 this.onEvent 被传递给 onClick，当点击事件产生后，event 被作为缺省参数传递给 onEvent
+  onEvent(event) {
+    console.log(event.target)
   }
   
   // render 方式是唯一需要实现的方法。
