@@ -64,7 +64,7 @@ class App extends Component {
    * 类的构造器:
    *   `props` 是构造参数，可以是数组，但是不管是什么，被传递给构造函数后都成为 `props`. 例如 `App`
    *   可以被这样初始化：
-   *     `new App(param1, param2,...)`
+   *     `new App(
    * 
    *   然后在 `App` 实例内任何地方可以通过解构从 `props` 中获得参数：
    *     `const {param1, param2} = this.props`
