@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Search from './Search'
+
 /**
  * 变量：尽可能遵守函数式编程要求使用静态修饰符 const，而不是 let 或 var. 
  */
@@ -58,7 +60,17 @@ function PrintBookInfo(b, owner) {
  * JavaScript 同时支持函数式和类编程. UI 类型的类必须集成 Component，并实现 render 方法。
  */
 class App extends Component {
-  // 类的构造器
+  /**
+   * 类的构造器:
+   *   `props` 是构造参数，可以是数组，但是不管是什么，被传递给构造函数后都成为 `props`. 例如 `App`
+   *   可以被这样初始化：
+   *     `new App(param1, param2,...)`
+   * 
+   *   然后在 `App` 实例内任何地方可以通过解构从 `props` 中获得参数：
+   *     `const {param1, param2} = this.props`
+   * 
+   *   构造函数 `constructor(props)` 是隐含的，即便没有显式声明也会缺省被执行。
+   */
   constructor(props) {
     // 在类构造器中处理任何数据之前，必须先调用父构造器
     super(props);
@@ -88,7 +100,7 @@ class App extends Component {
     })
   }
 
-  // onClick = {this.onEvent}; partial apply 函数 this.onEvent 被传递给 onClick，当点击事件产生后，event 被作为缺省参数传递给 onEvent
+  // onClick = {this.onEvent}; partial apply 函数 this.onEvent 被传递给 onClick，当点击事件产生后，event 被作为缺省参数传递给 onEvent 得到执行。
   onEvent(event) {
     console.log(event.target)
   }
@@ -96,7 +108,10 @@ class App extends Component {
   // render 方式是唯一需要实现的方法。
   render() {
     // 在这里我们调用了之前定义的函数
-    return (PrintBookInfo(this.state.books, this))
+    return (
+      // PrintBookInfo(this.state.books, this)
+      <Search value="AA" onChange={this.onEvent}></Search>
+      )
   }
 }
 
@@ -105,4 +120,4 @@ class App extends Component {
  * 
  * 也可以将 `PrintBookInfo` 函数改名为 `App()`，这样就不需要定义`App`类，只使用函数也可以。
  */
-export default App;
+export default App
